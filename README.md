@@ -4,3 +4,7 @@ Abstract— Snapshot compressive imaging (SCI) is an advanced approach for singl
 Index Terms— Snapshot compressive imaging, end-to-end neural networks, coded aperture design, shearing estimation, high-dimensional imaging
 
 
+
+# Demonstration of D-HAN’s effectiveness via an ablation analysis of the coded aperture and the shearing function.
+https://user-images.githubusercontent.com/19542786/160302676-d7e1500b-09e3-4954-bb09-2218042a873f.mp4
+
