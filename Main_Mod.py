@@ -1,6 +1,5 @@
 from Main_discriminator import inference
 import tensorflow as tf
-from Unrolling import generator
 from Unrolling2 import Gen2
 import numpy as np
 import h5py
@@ -82,22 +81,11 @@ def shuffle_crop(batch_size):
 ################################################################################################
 ##
 ################################################################################################
-
-#Gen = generator(size=[M, N, L], training=True, weigh_decay=1e-8, output_bands=L, bands=L, upsampling = 1, Factor = 1e8)
 #
-#Gen.load_weights("checkpoints/genw_CoherenceSpectral.tf")
 gen = Gen2(size=[M, N, L], training=True, weigh_decay=1e-8, output_bands=L, bands=L, upsampling = 1, Factor = 1e8)
-generator_optimizer = tf.keras.optimizers.Adam(1e-5)
+generator_optimizer = tf.keras.optimizers.Adam(1e-45)
 #
 
-
-#weights_lists = Gen.get_weights()
-
-#gen.layers[1].set_weights(Gen.layers[1].get_weights())
-
-#for i, layers in enumerate(Gen.layers[4:-1]):
-#  gen.layers[i+12].set_weights(Gen.layers[i+4].get_weights())  
-#   
 @tf.function
 def train_step(images,ShearF):
     ## This method returns a helper function to compute cross entropy loss
@@ -137,7 +125,7 @@ def train_step(images,ShearF):
 
 def run_gan():
 
-    gen.load_weights("checkpoints/genw_CoherenceTemporal.tf")
+    #gen.load_weights("checkpoints/genw_CoherenceTemporal.tf")
 
     epochs = 10000
     Loss = 1e6
