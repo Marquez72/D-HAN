@@ -43,18 +43,11 @@ def shuffle_crop(batch_size):
     Af = [0.8+Bx[Rx],0.072,0.0013]
     Af = np.float32(Af)
     for i in range(batch_size):
-        path = '/content/gdrive/My Drive/Doctorado/ArticulosMiguel/Datasets/Data_Temporal/%d.mat' % index[i]
+        path = './Data_Temporal/%d.mat' % index[i]
         img = hdf5storage.loadmat(path)['data']     
         #
-        if img.shape[2]>24:
-          img = np.float32(img)
-          img = img[:,:,Lind[i]:Lind[i]+L]          
-        elif img.shape[2]<25:
-          img = np.float32(img)
-          Ax = img[:,:,-1]                    
-          Ax = np.expand_dims(Ax,axis=-1)
-          img = np.concatenate([img,Ax],axis=-1)
-
+        img = np.float32(img)
+        img = img[:,:,Lind[i]:Lind[i]+L] 
         #
         for j in range(0,L):
           Ax = tf.expand_dims(cv2.resize(img[:,:,j], (512, 512)),axis=-1) 
