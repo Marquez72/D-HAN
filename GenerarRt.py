@@ -8,7 +8,7 @@ import math
 
 def Recon(gen=None):
     L = 25
-    Bd = np.linspace(3862, 3871, num=10)#[2279,2280,2281,2282,2283,2284,2285,2286,2289,2290]
+    Bd = np.linspace(3862, 3871, num=10)
     Zz = np.zeros([10])
     Bx  = [0,0.05,0.1,0.15,0.2,0,0.05,0.1,0.15,0.2,0,0.05,0.1,0.15,0.2,0,0.05,0.1,0.15,0.2]#tf.linspace(0.0, 0.2, 5)
     Bx = np.float32(Bx)      
@@ -20,8 +20,7 @@ def Recon(gen=None):
         ShearF = []
         ShearF.append(Af)
         ShearF=np.array(ShearF)
-        Ph = '/content/gdrive/My Drive/Doctorado/ArticulosMiguel/Datasets/Data_Temporal/%d.mat' %Bd[Nm]
-        #Ph = '/content/gdrive/My Drive/Canada/Spectral/testing_data/%d.mat' %Bd[Nm]
+        Ph = './Data_Temporal/%d.mat' %Bd[Nm]
         
         testing_data=hdf5storage.loadmat(Ph)['data'] #(10,256,256,24)
         testing_data = testing_data[:,:,0:L]
@@ -72,7 +71,7 @@ def Recon(gen=None):
         #sio.savemat('Results/Re_%d.mat'%Nm,{'X':X}) 
     Zm = np.mean(Zz)
     sio.savemat('Results/Psnr.mat',{'Zz':Zz}) 
-    Array = np.array(Zz/L)
+    Array = np.array(Zz)
     file = open("Results/PSNR.txt", "a+")
     content = str(Array)
     file.write(content + '\n')
