@@ -1,0 +1,2 @@
+model_checkpoint_path: "genw_CoherenceTemporal.tf"
+all_model_checkpoint_paths: "genw_CoherenceTemporal.tf"

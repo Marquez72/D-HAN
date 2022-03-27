@@ -1,0 +1,9 @@
+opencv-python
+lxml
+tqdm
+matplotlib
+poppy
+pandas
+numpy
+scipy
+hdf5storage
